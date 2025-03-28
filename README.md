@@ -102,6 +102,8 @@ Enter your password, then run:
 CREATE DATABASE your_database_name;
 ```
 
+The SQL script for the schema is available at `src/main/resources/sql/script.sql`.
+
 ---
 
 ## Swagger Documentation
