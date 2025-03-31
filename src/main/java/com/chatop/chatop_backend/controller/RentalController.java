@@ -17,17 +17,17 @@ import org.springframework.web.multipart.MultipartFile;
 import com.chatop.chatop_backend.dto.RentalListResponse;
 import com.chatop.chatop_backend.dto.RentalResponse;
 import com.chatop.chatop_backend.entity.Rental;
-import com.chatop.chatop_backend.service.RentalService;
-import com.chatop.chatop_backend.service.UserService;
+import com.chatop.chatop_backend.service.RentalServiceImpl;
+import com.chatop.chatop_backend.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("/api/rentals")
 public class RentalController {
 	@Autowired
-	private RentalService rentalService;
+	private RentalServiceImpl rentalService;
 
 	@Autowired
-	UserService userService;
+	UserServiceImpl userService;
 
 	@GetMapping
 	public ResponseEntity<RentalListResponse> getAll() {
@@ -47,7 +47,7 @@ public class RentalController {
 		}
 	}
 
-	@PostMapping
+	@PostMapping(consumes = "multipart/form-data")
 	public ResponseEntity<?> createRental(@RequestParam String name, @RequestParam Double surface,
 			@RequestParam Double price, @RequestParam String description, @RequestParam("picture") MultipartFile file,
 			Principal principal) {

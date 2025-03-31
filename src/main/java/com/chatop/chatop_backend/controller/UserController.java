@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.chatop.chatop_backend.dto.UserResponse;
 import com.chatop.chatop_backend.entity.User;
-import com.chatop.chatop_backend.service.UserService;
+import com.chatop.chatop_backend.service.UserServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserController {
 
-	private final UserService userService;
+	private final UserServiceImpl userService;
 
 	@GetMapping("/{idUser}")
 	public ResponseEntity<?> findUserById(@PathVariable Long idUser) {

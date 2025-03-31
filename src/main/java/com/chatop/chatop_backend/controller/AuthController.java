@@ -26,13 +26,13 @@ import com.chatop.chatop_backend.dto.UserResponse;
 import com.chatop.chatop_backend.entity.User;
 import com.chatop.chatop_backend.security.CustomUserDetailsService;
 import com.chatop.chatop_backend.security.JwtUtil;
-import com.chatop.chatop_backend.service.UserService;
+import com.chatop.chatop_backend.service.UserServiceImpl;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 	@Autowired
-	private UserService userService;
+	private UserServiceImpl userService;
 
 	@Autowired
 	private AuthenticationManager authManager;
@@ -53,7 +53,7 @@ public class AuthController {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("message", "Email already in use"));
 		}
 		User user = new User();
-		user.setPassword(passwordEncoder.encode(registerRequest.password())); // (à remplacer par vrai hash)
+		user.setPassword(passwordEncoder.encode(registerRequest.password()));
 		Timestamp now = new Timestamp(System.currentTimeMillis());
 		user.setCreatedAt(now);
 		user.setUpdatedAt(now);
@@ -68,11 +68,11 @@ public class AuthController {
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody AuthRequest loginRequest) {
 		try {
-			authManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.email(), // updated
+			authManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.email(), 
 					loginRequest.password()));
 
 			UserDetails user = userDetailsService.loadUserByUsername(loginRequest.email());
-			String token = JwtUtil.generateToken(user.getUsername()); // username = email in this case
+			String token = JwtUtil.generateToken(user.getUsername()); 
 
 			return ResponseEntity.ok(AuthResponse.builder().token(token).build());
 		} catch (AuthenticationException e) {
