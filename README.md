@@ -66,8 +66,10 @@ DB_URL=jdbc:mysql://localhost:3306/<your_database_name> DB_USERNAME=<your_databa
 mvn spring-boot:run -Dspring.datasource.url=jdbc:mysql://localhost:3306/<your_database_name> -Dspring.datasource.username=<your_database_name> -Dspring.datasource.password=<your_database_name>
 ```
 
+### 3. Configure Frontend Uploads Folder
+Make sure to create an `uploads` folder in your frontend project inside `src/assets` to store uploaded photos, or update the folder path in the `application.properties` file using the `file.upload-dir` variable.
 
-### 3. Run the application
+### 4. Run the application
 
 With Spring Tool Suite or Eclipse:  
 Right-click the project → Run As → Spring Boot App
@@ -111,3 +113,7 @@ The SQL script for the schema is available at `src/main/resources/sql/script.sql
 Once the application is running, visit the URL below in your browser to view the API docs:
 
 http://localhost:3001/swagger-ui/index.html#/
+
+#### JWT Authentication
+The API is secured with JWT Bearer Authentication. To test protected endpoints, first generate a JWT token using the login endpoint, then click Authorize in Swagger UI and enter your token. You will then be able to access and test secured endpoints.
+
