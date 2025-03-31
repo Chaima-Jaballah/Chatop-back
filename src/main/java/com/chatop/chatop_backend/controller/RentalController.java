@@ -17,17 +17,17 @@ import org.springframework.web.multipart.MultipartFile;
 import com.chatop.chatop_backend.dto.RentalListResponse;
 import com.chatop.chatop_backend.dto.RentalResponse;
 import com.chatop.chatop_backend.entity.Rental;
-import com.chatop.chatop_backend.service.RentalServiceImpl;
-import com.chatop.chatop_backend.service.UserServiceImpl;
+import com.chatop.chatop_backend.service.RentalService;
+import com.chatop.chatop_backend.service.UserService;
 
 @RestController
 @RequestMapping("/api/rentals")
 public class RentalController {
 	@Autowired
-	private RentalServiceImpl rentalService;
+	private RentalService rentalService;
 
 	@Autowired
-	UserServiceImpl userService;
+	UserService userService;
 
 	@GetMapping
 	public ResponseEntity<RentalListResponse> getAll() {

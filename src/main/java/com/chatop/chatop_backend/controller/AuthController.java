@@ -26,13 +26,13 @@ import com.chatop.chatop_backend.dto.UserResponse;
 import com.chatop.chatop_backend.entity.User;
 import com.chatop.chatop_backend.security.CustomUserDetailsService;
 import com.chatop.chatop_backend.security.JwtUtil;
-import com.chatop.chatop_backend.service.UserServiceImpl;
+import com.chatop.chatop_backend.service.UserService;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 	@Autowired
-	private UserServiceImpl userService;
+	private UserService userService;
 
 	@Autowired
 	private AuthenticationManager authManager;

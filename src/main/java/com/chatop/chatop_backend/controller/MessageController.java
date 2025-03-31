@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.chatop.chatop_backend.dto.MessageRequest;
-import com.chatop.chatop_backend.service.MessageServiceImpl;
+import com.chatop.chatop_backend.service.MessageService;
 
 @RestController
 @RequestMapping("/api/messages")
 public class MessageController {
 	@Autowired
-	private MessageServiceImpl messageService;
+	private MessageService messageService;
 
 	@PostMapping
 	public ResponseEntity<?> sendMessage(@RequestBody MessageRequest message) {
