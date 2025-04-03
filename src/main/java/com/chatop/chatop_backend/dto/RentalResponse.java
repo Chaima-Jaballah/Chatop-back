@@ -18,7 +18,7 @@ public record RentalResponse(Long id, String name, Double surface, Double price,
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd"); // Format the date
 		String createdAt = localCreatedAtDateTime.format(formatter);
 		String updatedAt = localUpdatedAtDateTime.format(formatter);
-		String pictureUrl = "http://localhost:4200/assets" + rental.getPicture();
+		String pictureUrl = "http://localhost:3001/uploads/" + rental.getPicture();
 		
 		return RentalResponse.builder().id(rental.getId()).name(rental.getName()).owner_id(rental.getOwner().getId())
 				.description(rental.getDescription()).picture(List.of(pictureUrl)).price(rental.getPrice())

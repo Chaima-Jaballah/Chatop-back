@@ -44,7 +44,7 @@ public class RentalServiceImpl implements RentalService{
 	public ResponseEntity<?> save(String name, Double surface, Double price, String description, Long userId,
 			MultipartFile file) {
 		String filename = UUID.randomUUID() + "_" + file.getOriginalFilename();
-		Path path = Paths.get(uploadDir + filename);
+		Path path = Paths.get(uploadDir, filename).toAbsolutePath().normalize();
 		try {
 			Files.createDirectories(path.getParent());
 			Files.copy(file.getInputStream(), path);
@@ -53,7 +53,7 @@ public class RentalServiceImpl implements RentalService{
 			rental.setSurface(surface);
 			rental.setPrice(price);
 			rental.setDescription(description);
-			rental.setPicture("/uploads/" + filename);
+			rental.setPicture(filename);
 
 			Timestamp now = new Timestamp(System.currentTimeMillis());
 			rental.setCreatedAt(now);
