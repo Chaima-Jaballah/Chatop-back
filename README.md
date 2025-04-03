@@ -66,8 +66,8 @@ DB_URL=jdbc:mysql://localhost:3306/<your_database_name> DB_USERNAME=<your_databa
 mvn spring-boot:run -Dspring.datasource.url=jdbc:mysql://localhost:3306/<your_database_name> -Dspring.datasource.username=<your_database_name> -Dspring.datasource.password=<your_database_name>
 ```
 
-### 3. Configure Frontend Uploads Folder
-Make sure to create an `uploads` folder in your frontend project inside `src/assets` to store uploaded photos, or update the folder path in the `application.properties` file using the `file.upload-dir` variable.
+### 3. Configure Uploads Folder
+Uploaded files are stored in an external folder at `C:/uploads`. Make sure this folder exists on your machine, or update the path in `application.properties` using the `file.upload-dir` property. Also, ensure access to this folder is configured in `auth.requestMatchers` and `addResourceHandlers` in the `SecurityConfig.java` file, so that files are stored externally on the server.
 
 ### 4. Run the application
 
