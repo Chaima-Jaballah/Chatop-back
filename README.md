@@ -1,6 +1,7 @@
-## ReadMe File ##
-
 # ChaTop Backend
+
+This **backend** is built to work with the OpenClassrooms frontend project available [here](https://github.com/OpenClassrooms-Student-Center/Developpez-le-back-end-en-utilisant-Java-et-Spring.git) (You can run it by following the instructions in the frontend project's README).
+
 
 ## Technologies Used
 
